@@ -1,0 +1,275 @@
+@mixin bp($point) {
+  @if $point == l {
+    @media (min-width: 65rem) { @content; }
+  }
+  @else if $point == m {
+    @media (min-width: 45rem) { @content; }
+  }
+  @else if $point == s {
+    @media (min-width: 35rem)  { @content; }
+  }
+}
+
+$pattern: "Rickett-Pattern";
+$regular: "Rickett Regular";
+$shadow: "Rickett-Shadow";
+$black: rgb(10,10,10);
+$blue: rgb(65,90, 245);
+$green: #00BA45;
+
+body {
+    padding: 1rem;
+    padding-top: 0;
+    background: rgb(255,210, 22);
+    font-family: Courier New, Courier, monospace;
+}
+
+
+.logo-small {
+    margin: 0 auto;
+    width: 90%;
+    display: block;
+    max-width: 30rem;
+    margin-bottom: 3rem;
+    @include bp(m){
+        display: none;
+    }
+}
+
+.logo-big {
+    display: none;
+    @include bp(m){
+        display: block;
+        margin-bottom: -6.5rem;
+    }
+}
+
+.countup {
+    position: absolute;
+    bottom: 9rem;
+    right: 5%;
+    font-family: $regular;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    word-spacing: .3em;
+}
+
+pattern polyline, pattern path{
+    fill: $black !important;
+}
+
+#letter-o rect {
+    fill: #000 !important;
+}
+
+.intro {
+    border-bottom: 0;
+}
+
+.intro h2 {
+    font-size: 3rem;
+    word-spacing: .2em;
+    position: relative;
+    font-family: $shadow;
+    color: $blue;
+    letter-spacing: -.225em;
+    word-spacing: .5em;
+    
+    @include bp(l){
+        font-size: 5rem;
+        text-align: center;
+        padding: 3rem 5%;
+        line-height: 1.4;
+    }
+}
+
+.seperator {
+    background-image: url(../assets/pattern.svg);
+    height: 10rem;
+    @include bp(m){
+        margin-bottom: 2rem;
+    }
+}
+
+.button {
+    border: 2px solid white;
+    color: $black;
+    font-size: 1.5rem;
+    word-spacing: .1em;
+    text-transform: uppercase;
+    font-family: $regular;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 0 auto;
+    display: inline-block;
+    
+    &:hover, &:focus {
+        background: rgba(white, .2);
+    }
+}
+
+.news h2 {
+    display: flex;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    
+    @include bp(l){
+        font-size: 2.5rem;
+        width: 90%;
+    }
+    
+    .title {
+        flex-basis: 100%;
+        text-decoration: underline;
+        &:hover, &:focus {
+            cursor: pointer;
+            color: $blue;
+        }
+    }
+}
+
+.date {
+    color: lightgray;
+    display: inline-block;
+    margin-right: .5em;
+    flex-basis: 40%;
+}
+
+main {
+    background: white;
+    
+    section {
+        border-bottom: 1px solid lightgray;
+        padding: 1.5rem;
+        &:last-child {
+            border-bottom: 0;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+    }
+    
+    h2 {
+        margin-bottom: .5rem;
+        font-size: 1.5rem;
+        word-spacing: .2em;
+        font-family: $regular;
+        text-transform: uppercase;
+    }
+    
+    h3 {
+        font-family: $regular;
+        color: $green;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        word-spacing: .3em;
+        letter-spacing: -.02em;
+        
+        @include bp(l){
+            font-size: 3rem;
+        }
+    }
+    
+    img {
+        display: block;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        font-size: 17px;
+        line-height: 1.55;
+    }
+}
+
+.links {
+    a {
+        display: block;
+        font-family: $regular;
+        color: $black;
+        text-transform: uppercase;
+        margin-bottom: .5rem;
+        text-decoration: underline;
+        font-size: 3rem;        
+        &:hover, &:focus {
+            color: $blue;
+        }
+        @include bp(l){
+            display: inline;
+            &:after {
+                content: ',';
+            }
+            &:last-child:after {
+                content: '';
+            }
+        }
+
+    }
+}
+
+.legal {
+    font-size: .8rem;
+    margin: 2rem auto;
+    text-align: center;   
+    width: 90%;
+}
+
+.logos {
+    text-align: center;
+    padding-top: 3rem;
+    img {
+        display: inline-block;
+        margin-bottom: 2rem;
+        opacity: .7;
+        width: 30%;
+        height: auto;
+        margin-right: .5rem;
+        vertical-align: bottom;
+        
+        @include bp(m){
+            width: 10%;
+        }
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+.logo-container, .video-container {
+    transition: 300ms ease-in-out;
+}
+
+.video-active {
+    .video-container {
+        opacity: 1;
+        pointer-events: all;
+        animation: bounce 1000ms linear both;
+    }
+}
+
+
+.video-container {
+    border-radius: 5px; 
+    position: fixed;
+    z-index: 100;
+    top: 5%;
+    left: 5%;
+    bottom: 5%;
+    width: 90%;
+    opacity: 0;
+    pointer-events: none;
+    a {
+        color: white;
+        display: block;
+        text-align: right;
+        font-weight: bold;
+        font-size: 1.2rem;
+    } 
+    iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
