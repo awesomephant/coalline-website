@@ -16,11 +16,11 @@ $shadow: "Rickett-Shadow";
 $black: rgb(10,10,10);
 $blue: rgb(65,90, 245);
 $green: #00BA45;
-
+$yellow: rgb(255,210, 22);
 body {
     padding: 1rem;
     padding-top: 0;
-    background: rgb(255,210, 22);
+    background: $yellow;
     font-family: Courier New, Courier, monospace;
 }
 
@@ -272,4 +272,29 @@ body {
         width: 100%;
         height: 100%;
     }
+}
+
+.findus {
+    position: relative;
+}
+
+.compass {
+    font-family: $regular;
+    position: absolute;
+    font-size: 70vw;
+    text-align: center;
+    top: -.2em;
+    opacity: .96;
+    color: $yellow;
+    
+    mix-blend-mode: multiply;
+    &.hidden {
+ //       display: none;
+    }
+}
+
+.distance {
+    font-size: 20vw;
+    letter-spacing: -.01em;
+    color: $blue;
 }
