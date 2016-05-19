@@ -21,3 +21,14 @@ window.navigator.geolocation.getCurrentPosition(function(pos) {
   console.log('distance: ' + d);
   document.getElementById('loc').textContent = d;
 });
+
+function getAngle(coordinates){
+    var alpha = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+}
+
+/** Converts numeric degrees to radians */
+if (typeof(Number.prototype.toRad) === "undefined") {
+  Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+  }
+}
