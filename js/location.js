@@ -1,4 +1,3 @@
-var clCoordinates = [51.469575, -0.070683];
 function distance(lon1, lat1, lon2, lat2) {
   var R = 6371; // Radius of the earth in km
   var dLat = (lat2-lat1).toRad();  // Javascript functions in radians
@@ -8,7 +7,23 @@ function distance(lon1, lat1, lon2, lat2) {
           Math.sin(dLon/2) * Math.sin(dLon/2); 
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
   var d = R * c; // Distance in km
-  return d;
+  return d * 1000 //distance in m
+}
+
+var currentCoordinates = [0,0];
+var clCoordinates = [51.469575, -0.070683];
+
+window.navigator.geolocation.getCurrentPosition(function(pos) {
+  currentCoordinates[0] = pos.coords.longitude;
+  currentCoordinates[1] = pos.coords.latitude;
+  var d = Math.round(distance(pos.coords.longitude, pos.coords.latitude, clCoordinates[1], clCoordinates[0]))
+  console.log(pos); 
+  console.log('distance: ' + d);
+  document.getElementById('loc').textContent = d;
+});
+
+function getAngle(coordinates){
+    var alpha = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
 }
 
 /** Converts numeric degrees to radians */
@@ -18,12 +33,6 @@ if (typeof(Number.prototype.toRad) === "undefined") {
   }
 }
 
-window.navigator.geolocation.getCurrentPosition(function(pos) {
-  var d = Math.round(distance(pos.coords.longitude, pos.coords.latitude, 42.37, 71.03))
-  console.log(pos); 
-  console.log('distance: ' + d);
-  document.getElementById('loc').textContent = d;
-});
 
 Compass.watch(function (heading) {
   document.getElementById('degrees').textContent(heading);

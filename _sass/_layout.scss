@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'rickett-regular';
+    src: url('./rickett-regular-webfont.woff2') format('woff2'),
+         url('./rickett-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rickett-shadow';
+    src: url('./rickett-shadow-webfont.woff2') format('woff2'),
+         url('./rickett-shadow-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 @mixin bp($point) {
   @if $point == l {
     @media (min-width: 65rem) { @content; }
@@ -11,8 +29,8 @@
 }
 
 $pattern: "Rickett-Pattern";
-$regular: "Rickett Regular";
-$shadow: "Rickett-Shadow";
+$regular: "rickett-regular";
+$shadow: "rickett-shadow";
 $black: rgb(10,10,10);
 $blue: rgb(65,90, 245);
 $green: #00BA45;
@@ -282,6 +300,7 @@ body {
     font-family: $regular;
     position: absolute;
     font-size: 70vw;
+    pointer-events: none;
     text-align: center;
     top: -.2em;
     opacity: .96;
@@ -294,7 +313,7 @@ body {
 }
 
 .distance {
-    font-size: 20vw;
+    font-size: 10vw;
     letter-spacing: -.01em;
     color: $blue;
 }
