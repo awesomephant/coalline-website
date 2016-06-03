@@ -33,12 +33,20 @@ if (typeof (Number.prototype.toRad) === "undefined") {
   }
 }
 
-var toggle = function(){
+var color = function (){
+  var c = randomColor();
+   $('body').css('background-color', c);
+  
+}
+
+var video = function(){
+ 
   $('#video').toggleClass('active');
+ 
 }
 
 $(document).ready(function () {
-  var c = randomColor();
-  $('body').css('backround-color', c);
-  window.setInterval(toggle, 35000)
+  window.setInterval(color, 1500)
+  window.setInterval(video, 35000)
+
 })
