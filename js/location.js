@@ -40,9 +40,8 @@ var color = function (){
 }
 
 var video = function(){
- 
   $('#video').toggleClass('active');
- 
+  document.getElementById("vid").currentTime = 0;
 }
 
 $(document).ready(function () {
