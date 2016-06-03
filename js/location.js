@@ -47,6 +47,6 @@ var video = function(){
 
 $(document).ready(function () {
   window.setInterval(color, 1500)
-  window.setInterval(video, 35000)
+  window.setInterval(video, 45000)
 
 })
