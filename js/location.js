@@ -38,5 +38,7 @@ var toggle = function(){
 }
 
 $(document).ready(function () {
+  var c = randomColor();
+  $('body').css('backround-color', c);
   window.setInterval(toggle, 35000)
 })
