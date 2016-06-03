@@ -317,3 +317,18 @@ body {
     letter-spacing: -.01em;
     color: $blue;
 }
+
+#video {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background: blue;
+    opacity: 0;
+    transition: 300ms;
+    &.active {
+        opacity: 1;
+    }
+}
